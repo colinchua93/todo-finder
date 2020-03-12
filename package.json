@@ -1,0 +1,19 @@
+{
+  "name": "todos-finder",
+  "version": "1.0.0",
+  "description": "Find all TODOs string!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colinchua93/todos-finder.git"
+  },
+  "author": "Colin Chua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/colinchua93/todos-finder/issues"
+  },
+  "homepage": "https://github.com/colinchua93/todos-finder#readme"
+}
