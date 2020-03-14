@@ -1,15 +1,17 @@
+// Functions needed => readLine (To read file's line)
+// Path => for producing the path joining
+// fs => file system finder
+// Some javascript thats it!
+
 const http = require("http");
-const fs = require("fs");
 const path = require("path");
+const fileFinder = require("./src/helpers/file-finder");
+const wordFinder = require("./src/helpers/word-finder")
+
+const directoryPath = path.join(__dirname, "src");
 
 const hostname = "127.0.0.1";
 const port = 3000;
-
-const directoryPath = path.join(__dirname, 'src')
-
-const directoryPathList = () => {
-  return fs.readdirSync(directoryPath)
-}
 
 const server = http.createServer((req, res) => {
   fs.readFile("demofile1.html", function(err, data) {
@@ -20,6 +22,9 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  console.log(directoryPathList())
-  console.log(`Server running at http://${hostname}:${port}/`);
+  const allFiles = fileFinder(directoryPath);
+  const filesWithTodo = wordFinder(allFiles, 'TODO')
+  filesWithTodo.forEach(data => {
+    console.log(data)
+  })
 });
