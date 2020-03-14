@@ -3,9 +3,10 @@
 // fs => file system finder
 // Some javascript thats it!
 
-const todoFinder = require("./todo-finder");
 const http = require("http");
 const path = require("path");
+const fileFinder = require("./src/helpers/file-finder");
+const wordFinder = require("./src/helpers/word-finder")
 
 const directoryPath = path.join(__dirname, "src");
 
@@ -21,6 +22,9 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  console.log(todoFinder(directoryPath));
-  console.log(`Server running at http://${hostname}:${port}/`);
+  const allFiles = fileFinder(directoryPath);
+  const filesWithTodo = wordFinder(allFiles, 'TODO')
+  filesWithTodo.forEach(data => {
+    console.log(data)
+  })
 });
