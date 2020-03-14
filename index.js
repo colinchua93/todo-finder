@@ -1,15 +1,16 @@
+// Functions needed => readLine (To read file's line)
+// Path => for producing the path joining
+// fs => file system finder
+// Some javascript thats it!
+
+const todoFinder = require("./todo-finder");
 const http = require("http");
-const fs = require("fs");
 const path = require("path");
+
+const directoryPath = path.join(__dirname, "src");
 
 const hostname = "127.0.0.1";
 const port = 3000;
-
-const directoryPath = path.join(__dirname, 'src')
-
-const directoryPathList = () => {
-  return fs.readdirSync(directoryPath)
-}
 
 const server = http.createServer((req, res) => {
   fs.readFile("demofile1.html", function(err, data) {
@@ -20,6 +21,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  console.log(directoryPathList())
+  console.log(todoFinder(directoryPath));
   console.log(`Server running at http://${hostname}:${port}/`);
 });
