@@ -5,8 +5,8 @@
 
 const http = require("http");
 const path = require("path");
-const fileFinder = require("./src/helpers/file-finder");
-const wordFinder = require("./src/helpers/word-finder")
+const fileFinder = require("./helpers/file-finder");
+const wordFinder = require("./helpers/word-finder")
 
 const directoryPath = path.join(__dirname, "src");
 
