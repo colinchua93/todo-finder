@@ -1,0 +1,8 @@
+version: "2"
+
+services: 
+    todo_finder:
+        build: ./
+        container_name: todo_finder
+        ports: 
+            - "8080:8080"

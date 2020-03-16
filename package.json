@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/colinchua93/todos-finder#readme",
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "mock-fs": "^4.11.0"
   }
 }

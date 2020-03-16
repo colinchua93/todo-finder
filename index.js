@@ -10,8 +10,8 @@ const wordFinder = require("./helpers/word-finder");
 
 const directoryPath = path.join(__dirname, "src");
 
-const hostname = "127.0.0.1";
-const port = 3000;
+const hostname = "0.0.0.0";
+const port = 8080;
 
 const todoFinder = () => {
   const allFiles = fileFinder(directoryPath);
@@ -38,11 +38,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  // const allFiles = fileFinder(directoryPath);
-  // const filesWithTodo = wordFinder(allFiles, 'TODO')
   console.log(`Server running at http://${hostname}:${port}/`);
-
-  // filesWithTodo.forEach(data => {
-  //   console.log(data)
-  // })
 });
