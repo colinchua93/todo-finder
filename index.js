@@ -5,26 +5,44 @@
 
 const http = require("http");
 const path = require("path");
-const fileFinder = require("./src/helpers/file-finder");
-const wordFinder = require("./src/helpers/word-finder")
+const fileFinder = require("./helpers/file-finder");
+const wordFinder = require("./helpers/word-finder");
 
 const directoryPath = path.join(__dirname, "src");
 
 const hostname = "127.0.0.1";
 const port = 3000;
 
+const todoFinder = () => {
+  const allFiles = fileFinder(directoryPath);
+  const filesWithTodo = wordFinder(allFiles, 'TODO')
+
+  return filesWithTodo.join("\n")
+}
+
 const server = http.createServer((req, res) => {
-  fs.readFile("demofile1.html", function(err, data) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write(data);
-    res.end();
-  });
+  req.on('error', err => {
+    console.log(err)
+
+    res.statusCode = 400
+    res.end('400: Bad request')
+    return;
+  })
+
+  res.on('error', err => {
+    console.log(err)
+  })
+
+  res.write(todoFinder())
+  res.end();
 });
 
 server.listen(port, hostname, () => {
-  const allFiles = fileFinder(directoryPath);
-  const filesWithTodo = wordFinder(allFiles, 'TODO')
-  filesWithTodo.forEach(data => {
-    console.log(data)
-  })
+  // const allFiles = fileFinder(directoryPath);
+  // const filesWithTodo = wordFinder(allFiles, 'TODO')
+  console.log(`Server running at http://${hostname}:${port}/`);
+
+  // filesWithTodo.forEach(data => {
+  //   console.log(data)
+  // })
 });
