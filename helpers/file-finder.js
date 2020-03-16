@@ -1,9 +1,4 @@
 const { readdirSync, lstatSync } = require("fs");
-const path = require("path");
-
-const directoryPath = (data) => {
-  return path.join(__dirname, `src/${data}`);
-}
 
 const fileFinder = (source, filelist = []) => {
   files = readdirSync(source);
