@@ -1,8 +1,3 @@
-// Functions needed => readLine (To read file's line)
-// Path => for producing the path joining
-// fs => file system finder
-// Some javascript thats it!
-
 const http = require("http");
 const path = require("path");
 const fileFinder = require("./helpers/file-finder");

@@ -1,5 +1,9 @@
 # todo-finder
 
+## Purpose of the project
+
+This project act as a TODO finder using only node js and docker(Optional).
+
 ## Requirement
 
 - Nodejs
